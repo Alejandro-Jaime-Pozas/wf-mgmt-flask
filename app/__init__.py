@@ -1,0 +1,1 @@
+# initiate the flask app, add cors, config, blueprints
