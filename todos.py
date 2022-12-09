@@ -5,4 +5,5 @@
 # rest of the tables, equipment, order, bank_acct, order_equipment can all be in different folder: they are all related to employee fns, so maybe it could be /onboarding
 # so ADMIN, EMPLOYEE in auth dir
 # rest of classes in onboarding dir
-# people will need authentication procedures. employee bank?
+# people will need authentication procedures. employee bank? leave simple for now.
+# 

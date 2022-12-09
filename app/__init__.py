@@ -7,4 +7,19 @@ from flask_migrate import Migrate
 
 app = Flask(__name__)
 
+# init config for flask app using Config class variables
 app.config.from_object(Config)
+
+# init cross origin resource sharing
+CORS(app)
+
+# init sql database using sqlalchemy
+db = SQLAlchemy(app)
+
+# init migrate to allow db creation and updating
+migrate = Migrate(app, db)
+
+# import blueprints here after initializing other fns so app can function
+
+# import routes after initializing other fns
+from . import routes
