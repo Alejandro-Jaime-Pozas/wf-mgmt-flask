@@ -4,8 +4,6 @@ import os, base64
 from datetime import datetime, timedelta
 from werkzeug.security import generate_password_hash, check_password_hash
 
-# TODO: employee class w methods
-
 # admin class is for admin person who handles employee onboarding mgmt. needs to have email/user, password, token access..
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,21 +59,21 @@ class Admin(db.Model):
             'email': self.email,
             'create_date': self.create_date,
             'active': self.active,
-            # employees attribute add
+            # employees attribute add later
         }
 
 
 # employee class is for new employees who go through onboarding process. need to confirm they're job offer, create std work email, 'link' their bank acct, choose their tech equipment. This class inherits from Admin parent class.
-class Employee(Admin):
-    # id = db.Column(db.Integer, primary_key=True)
-    # first_name = db.Column(db.String(50), nullable=False)
-    # last_name = db.Column(db.String(50), nullable=False)
-    # email = db.Column(db.String(100), nullable=False, unique=True)
-    # password = db.Column(db.String(128), nullable=False)
-    # token = db.Column(db.String(64), unique=True, index=True)
-    # token_expiration = db.Column(db.DateTime)
-    # active = db.Column(db.Boolean, nullable=False, default=True)
-    # create_date = db.Column(db.DateTime, default=datetime.utcnow())
+class Employee(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    password = db.Column(db.String(128), nullable=False)
+    token = db.Column(db.String(64), unique=True, index=True)
+    token_expiration = db.Column(db.DateTime)
+    active = db.Column(db.Boolean, nullable=False, default=True)
+    create_date = db.Column(db.DateTime, default=datetime.utcnow())
     job_title = db.Column(db.String(50)) # find way to make admin create employee's job title...
     personal_email = db.Column(db.String(100), unique=True)
     admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False) # admin.id refers to admin table's id column
@@ -106,5 +104,5 @@ class Employee(Admin):
             'personal_email': self.personal_email,
             'create_date': self.create_date,
             'active': self.active,
-            # employees attribute add
+            # bank accts, orders add? or add employee to BankAccount, Order classes?
         }
