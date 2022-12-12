@@ -20,6 +20,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
 # import blueprints here after initializing other fns so app can function
+from .blueprints.auth import auth
+app.register_blueprint(auth)
 
 # import routes after initializing other fns
 from . import routes
