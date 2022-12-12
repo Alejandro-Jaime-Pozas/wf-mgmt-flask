@@ -77,7 +77,7 @@ class Employee(db.Model):
     job_title = db.Column(db.String(50)) # find way to make admin create employee's job title...
     personal_email = db.Column(db.String(100), unique=True)
     admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'), nullable=False) # admin.id refers to admin table's id column
-    bank_accounts = db.relationship('BankAccount', backref='employee', lazy=True)
+    bank_accounts = db.relationship('BankAcct', backref='employee', lazy=True)
     orders = db.relationship('Order', backref='employee', lazy=True)
 
     def __init__(self, **kwargs):

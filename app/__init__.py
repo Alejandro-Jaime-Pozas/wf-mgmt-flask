@@ -22,6 +22,8 @@ migrate = Migrate(app, db)
 # import blueprints here after initializing other fns so app can function
 from .blueprints.auth import auth
 app.register_blueprint(auth)
+from .blueprints.onboarding import onboarding
+app.register_blueprint(onboarding)
 
 # import routes after initializing other fns
 from . import routes
