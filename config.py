@@ -1,7 +1,7 @@
 # insert config info for database connection
 import os
 
-basedir = os.path.abspath(os.path.abspath(__file__))
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config:
     # if environment variables present, secret key and db are set to following:
