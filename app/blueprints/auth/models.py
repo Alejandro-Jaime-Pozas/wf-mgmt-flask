@@ -90,6 +90,18 @@ class Employee(db.Model):
     def __repr__(self):
         return f"<Employee|Email: {self.email}, Name: {self.first_name} {self.last_name}>"
 
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    def get_token(self, expires_in=3600): # COME BACK
+        now = datetime.utcnow()
+        if self.token and self.token_expiration > now + timedelta(minutes=1): # this checks to see if there is an existing token for user
+            return self.token
+        self.token = base64.b64encode(os.urandom(16)).decode('utf-8') # this is gibberish
+        self.token_expiration = now + timedelta(seconds=expires_in)
+        db.session.commit()
+        return self.token
+
     def update(self, data): # COME BACK
         pass
 
