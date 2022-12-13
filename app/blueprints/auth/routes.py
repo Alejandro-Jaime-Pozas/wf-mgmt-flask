@@ -9,7 +9,7 @@ from flask import jsonify, request
 @auth.route('/admins', methods=['GET', 'POST'])
 def admin_signup():
     # need fname, lname, email, password attributes from frontend
-    data = request.json
+    data = request.json # dict object
     # check if user has input all required fields, if not return err
     for field in {'first_name', 'last_name', 'email', 'password'}:
         if field not in data:

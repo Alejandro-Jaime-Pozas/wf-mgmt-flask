@@ -60,6 +60,7 @@ class Admin(db.Model):
             'create_date': self.create_date,
             'active': self.active,
             # employees attribute add later
+            'employees': self.employees
         }
 
 
