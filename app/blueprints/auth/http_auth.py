@@ -5,9 +5,10 @@ from datetime import datetime
 basic_auth = HTTPBasicAuth()
 token_auth = HTTPTokenAuth()
 
-# check password for admin and employee
+# verify password for admin or employee
 @basic_auth.verify_password
 def verify(email, password):
+    # CHECK TO SEE IF CODE BELOW WORKS..
     user = Admin.query.filter_by(email=email).first() or Employee.query.filter_by(email=email).first()
     if user and user.check_password(password):
         return user
@@ -15,6 +16,7 @@ def verify(email, password):
     # if employee and employee.check_password(password):
     #     return employee
 
+# verify a token for admin or employee
 @token_auth.verify_token
 def verify(token):
     user = Admin.query.filter_by(token=token).first() or Employee.query.filter_by(token=token).first()

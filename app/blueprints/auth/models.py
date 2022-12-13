@@ -7,10 +7,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 # admin class is for admin person who handles employee onboarding mgmt. needs to have email/user, password, token access..
 class Admin(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(50), nullable=False)
-    last_name = db.Column(db.String(50), nullable=False)
-    email = db.Column(db.String(100), nullable=False, unique=True)
-    password = db.Column(db.String(128), nullable=False)
+    first_name = db.Column(db.String(50), nullable=False) # MANUAL
+    last_name = db.Column(db.String(50), nullable=False) # MANUAL
+    email = db.Column(db.String(100), nullable=False, unique=True) # MANUAL
+    password = db.Column(db.String(128), nullable=False) # MANUAL
     token = db.Column(db.String(64), unique=True, index=True)
     token_expiration = db.Column(db.DateTime)
     active = db.Column(db.Boolean, nullable=False, default=True)
